@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sine Graphing</title>
+</head>
+<body>
+    <h1>Let's Graph the Sine Function</h1>
+
+    <p>
+        We're plotting a variation of a sine wave. The equation is:
+        <br>
+        <code>A * sin(B * x) + C</code>
+        <br>
+        for <code>x</code> in the range <code>0</code> to <code>4π</code>.
+    </p>
+
+    <form method="post" action="">
+        <table>
+            {% for field in form %}
+            <tr>
+                <td>{{ field.label }}</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p>
+            <input type="submit" value="Plot">
+        </p>
+    </form>
+
+    {% if result %}
+    <p>
+        <img src="{{ result }}" alt="Sine graph" width="500">
+    </p>
+    {% endif %}
+</body>
+</html>

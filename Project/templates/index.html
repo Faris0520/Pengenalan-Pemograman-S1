@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes of the Day</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="quotebox">
+        <h2>Quotes of the Day</h2>
+        <blockquote id="quotes">Loading..</blockquote>
+        <span id="author">Loading..</span>
+        <div>
+            <button onclick="getQuote()">New Quote</button>
+            <button onclick="twt()"><img src="{{ url_for('static', filename='x.png') }}" alt="twt">Tweet</button>
+        </div>
+    </div>
+    <script>
+        async function getQuote() {
+            const response = await fetch('/quote');
+            const data = await response.json();
+            document.getElementById('quotes').innerHTML = data.quote;
+            document.getElementById('author').innerHTML = data.author;
+        }
+        function twt() {
+            const quoteText = document.getElementById('quotes').innerText;
+            const authorText = document.getElementById('author').innerText;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText} - by ${authorText}`;
+            window.open(twitterUrl, 'X Window', 'width=600,height=400');
+        }
+        getQuote();
+    </script>
+</body>
+</html>

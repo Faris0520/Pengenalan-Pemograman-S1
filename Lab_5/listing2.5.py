@@ -1,0 +1,1 @@
+lead_calculation_float = lead_calculation_float ** 2

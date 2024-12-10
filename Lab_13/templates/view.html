@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fields</title>
+</head>
+<body>
+    <!-- Menampilkan pesan yang dikirimkan -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <h1>{{ message }}</h1>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h1>Show off Fields</h1>
+
+    <form method="post" action="">
+        <p>Let's look at some fields</p>
+
+        <label for="text-field">Enter some text:</label>
+        {{ template_form.text_field }}
+        <br>
+
+        <label for="float-field">Enter a floating point value:</label>
+        {{ template_form.float_field }}
+        <br>
+
+        <label for="radio-field">Select a button:</label>
+        {{ template_form.radio_field }}
+        <br>
+
+        <label for="select-field">Select a field:</label>
+        {{ template_form.select_field }}
+        <br>
+
+        <label for="boolean-field">Agree to do calculation?</label>
+        {{ template_form.boolean_field }}
+        <br>
+
+        <!-- Menampilkan hasil jika tersedia -->
+        {% if result != None %}
+            <p>{{ result }}</p>
+        {% endif %}
+        <br>
+
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
